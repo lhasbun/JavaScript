@@ -46,16 +46,13 @@
  */
 var compose = function(functions) {
 
-    const numFuncs = functions.length - 1;
-    
     return function(x) {
 
-        let curr = x;
-
-        for (let y = functions.length; y < 0 ; y--)
-            curr = functions[y](curr);
-
-        return curr
+        if (functions.length === 0) 
+            return x;
+        else
+            return functions.reduceRight((acc, curr) => curr(acc), x);
+                
     }
 };
 
