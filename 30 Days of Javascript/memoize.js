@@ -59,7 +59,7 @@
  * 1 <= n <= 10
  * 1 <= actions.length <= 105
  * actions.length === values.length
- * actions[i] is one of "call" and "getCallCount"
+ * actions[i] is one of "call"S and "getCallCount"
  * fnName is one of "sum", "factorial" and "fib"
  */
 
@@ -69,27 +69,27 @@
  */
 function memoize(fn) {
 
+    // Use a Map to store the results of previous calls
     const cache = new Map;
     
     return function(...args) {
 
         let result = 0;
+        // Convert the arguments to a string to use as a key
         let key = JSON.stringify(args);
-
+        // Check if the result is already cached, if so return it
         if (cache.has(key)) {
             return cache.get(key);
         }
+        // If not, call the function and cache the result
         else {
-
             result = fn(...args);
             cache.set(key, result);
             return result;
-
         }
-
-    } 
-
-}
+        
+    }; 
+};
 
 
 /** 
