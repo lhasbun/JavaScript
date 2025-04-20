@@ -57,9 +57,17 @@
  * @return {Function}
  */
 var cancellable = function(fn, args, t) {
-
-    
-    
+    // Set timeout (t) for function (fn) execution 
+    const timeoutId = setTimeout(() => {
+        fn(...args);
+    }, t);    
+    // cancelFn clears the timeout
+    const cancelFn = () => {
+        setTimeout(() => {
+            clearTimeout(timeoutId);
+        }, )
+    }
+    return cancelFn;
 };
 
 /**
